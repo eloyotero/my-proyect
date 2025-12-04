@@ -45,14 +45,43 @@ const App: React.FC = () => {
   });
 
   return (
-    <div className="app p-6 max-w-md mx-auto bg-white rounded shadow">
-      <h1 className="text-2xl font-bold mb-4">ToDo App</h1>
+    <div className="app p-6 max-w-md mx-auto rounded-lg shadow-lg">
+      <h1 className="text-3xl font-bold mb-6 text-center text-white">
+        ToDo App
+      </h1>
       <AddTask onAdd={addTask} />
 
-      <div className="filters flex gap-2 mb-4">
-        <button onClick={() => setFilter("all")}>Todas</button>
-        <button onClick={() => setFilter("completed")}>Completadas</button>
-        <button onClick={() => setFilter("pending")}>Pendientes</button>
+      <div className="filters flex gap-2 mb-6 justify-center">
+        <button
+          onClick={() => setFilter("all")}
+          className={`px-4 py-2 rounded-full font-medium ${
+            filter === "all"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+          } transition-all duration-300`}
+        >
+          Todas
+        </button>
+        <button
+          onClick={() => setFilter("completed")}
+          className={`px-4 py-2 rounded-full font-medium ${
+            filter === "completed"
+              ? "bg-green-500 text-white"
+              : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+          } transition-all duration-300`}
+        >
+          Completadas
+        </button>
+        <button
+          onClick={() => setFilter("pending")}
+          className={`px-4 py-2 rounded-full font-medium ${
+            filter === "pending"
+              ? "bg-yellow-500 text-white"
+              : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+          } transition-all duration-300`}
+        >
+          Pendientes
+        </button>
       </div>
 
       <TaskList

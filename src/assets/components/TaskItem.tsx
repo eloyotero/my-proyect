@@ -16,21 +16,25 @@ const TaskItem: React.FC<TaskItemProps> = ({
   onDelete,
 }) => {
   return (
-    <li className="flex items-center justify-between p-2 border-b">
-      <div className="flex items-center gap-2">
-        {}
+    <li className="flex items-center justify-between p-3 mb-2 bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div className="flex items-center gap-3">
         <input
           type="checkbox"
           checked={completed}
           onChange={() => onToggle(id)}
+          className="w-5 h-5 accent-green-500"
         />
-        <span className={completed ? "line-through text-gray-500" : ""}>
+        <span
+          className={`text-lg ${
+            completed ? "line-through text-gray-400" : "text-gray-100"
+          }`}
+        >
           {text}
         </span>
       </div>
       <button
         onClick={() => onDelete(id)}
-        className="text-red-500 hover:text-red-700"
+        className="text-red-400 hover:text-red-600 text-xl font-bold transition-colors duration-200"
       >
         ✖
       </button>
