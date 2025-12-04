@@ -16,14 +16,20 @@ const AddTask: React.FC<AddTaskProps> = ({ onAdd }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Nueva tarea..."
+        className="border p-2 flex-1 rounded"
       />
-      <button type="submit">Añadir</button>
+      <button
+        type="submit"
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Añadir
+      </button>
     </form>
   );
 };
