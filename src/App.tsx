@@ -20,7 +20,6 @@ const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
-
   const addTask = (text: string) => {
     const newTask: Task = { id: Date.now(), text, completed: false };
     setTasks([...tasks, newTask]);
@@ -38,11 +37,13 @@ const App: React.FC = () => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const filteredTasks = tasks.filter((task) => {
-    if (filter === "completed") return task.completed;
-    if (filter === "pending") return !task.completed;
-    return true;
-  });
+  const filteredTasks = tasks
+    .filter((task) => {
+      if (filter === "completed") return task.completed;
+      if (filter === "pending") return !task.completed;
+      return true;
+    })
+    .sort((a, b) => Number(a.completed) - Number(b.completed));
 
   return (
     <div className="app p-6 max-w-md mx-auto rounded-lg shadow-lg">
